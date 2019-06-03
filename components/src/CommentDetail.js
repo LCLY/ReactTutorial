@@ -1,7 +1,10 @@
 import React from 'react';
-import faker from 'faker';
+import faker from 'faker'; //get image from the faker library
 
-const CommentDetail = () => {
+//prop: get data from jsx
+//props: getting the three instances we created, author(key):"name"(value)
+const CommentDetail = props => {
+	//{} to refer props because its javascript props.author to refer to the author object
 	return (
 		<div className="comment">
 			<a href="/" className="avatar">
@@ -9,7 +12,7 @@ const CommentDetail = () => {
 			</a>
 			<div className="content">
 				<a href="/" className="author">
-					Sam
+					{props.author}
 				</a>
 				<div className="metadata">
 					<span className="date">Today at 6:00PM</span>
