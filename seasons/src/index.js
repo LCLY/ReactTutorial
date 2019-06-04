@@ -8,12 +8,19 @@ class App extends React.Component {
 		super(props);
 		//initialize relevant value
 		this.state = { lat: null, errorMessage: '' };
+	}
 
+	componentDidMount() {
+		console.log('My component was rendered to the screen');
 		window.navigator.geolocation.getCurrentPosition(
 			position => this.setState({ lat: position.coords.latitude }),
 			err => this.setState({ errorMessage: err.message }),
+			//never assign the value directly to this.state e.g. this.state.lat = position.coords.latitude after initialized
 		);
-		//never assign the value directly to this.state e.g. this.state.lat = position.coords.latitude
+	}
+
+	componentDidUpdate() {
+		console.log('My component was just updated - it rerendered');
 	}
 
 	render() {
