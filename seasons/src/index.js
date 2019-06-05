@@ -4,14 +4,18 @@ import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
 	//this is specific to javascript
-	constructor(props) {
+	/*constructor(props) {
 		super(props);
 		//initialize relevant value
 		this.state = { lat: null, errorMessage: '' };
-	}
+	}*/
+
+	//this line is equivalent to the whole 5 lines above because babel will translate this line to other ES format
+	state = { lat: null, errorMessage: '' };
 
 	componentDidMount() {
-		console.log('My component was rendered to the screen');
+		//console.log('My component was rendered to the screen');
+		console.log('componentDidMount');
 		window.navigator.geolocation.getCurrentPosition(
 			position => this.setState({ lat: position.coords.latitude }),
 			err => this.setState({ errorMessage: err.message }),
@@ -20,15 +24,16 @@ class App extends React.Component {
 	}
 
 	componentDidUpdate() {
-		console.log('My component was just updated - it rerendered');
+		//console.log('My component was just updated - it rerendered');
+		console.log('componentDidUpdate');
 	}
 
 	render() {
 		if (this.state.errorMessage && !this.state.lat) {
-			return <div>{this.state.errorMessage}</div>;
+			return <div> Error: {this.state.errorMessage}</div>;
 		}
 		if (this.state.lat && !this.state.errorMessage) {
-			return <div>{this.state.lat}</div>;
+			return <SeasonDisplay lat={this.state.lat} />;
 		}
 		return <div>loading</div>;
 	}
