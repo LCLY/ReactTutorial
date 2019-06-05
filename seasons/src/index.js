@@ -38,7 +38,7 @@ class App extends React.Component {
 			return <SeasonDisplay lat={this.state.lat} />;
 		}
 		//if non is available, load the loading screen
-		return <Spinner />;
+		return <Spinner message="Please accept location request" />;
 	}
 }
 
