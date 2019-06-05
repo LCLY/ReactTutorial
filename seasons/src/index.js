@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
-
+import Spinner from './Spinner';
 class App extends React.Component {
 	//this is specific to javascript
 	/*constructor(props) {
@@ -29,13 +29,16 @@ class App extends React.Component {
 	}
 
 	render() {
+		//if theres error message and theres no latitude
 		if (this.state.errorMessage && !this.state.lat) {
 			return <div> Error: {this.state.errorMessage}</div>;
 		}
+		//otherwise
 		if (this.state.lat && !this.state.errorMessage) {
 			return <SeasonDisplay lat={this.state.lat} />;
 		}
-		return <div>loading</div>;
+		//if non is available, load the loading screen
+		return <Spinner />;
 	}
 }
 
