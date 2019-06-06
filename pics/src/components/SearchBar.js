@@ -9,9 +9,14 @@ class SearchBar extends React.Component {
 	//there should not be () in onInputChange since its a callback function,
 	//meaning it should only be called in certain situation if add () it will always be called every render
 
-	//onChange is a special name, use for change duh
+	//onChange is a special name, use for changed text/input
 	//there are onClick, onSubmit
 	//onChange- user change text, onClick - user click, onSubmit - user submit form
+
+	//Event handler Syntax
+	//Syntax 1: onChange = {this.onInputChange}
+	//Syntax 2: onChange={event => console.log(event.target.value)}
+	//Syntax 2 will not require another method such as onInputChange which is more elegant
 
 	render() {
 		return (
@@ -19,7 +24,8 @@ class SearchBar extends React.Component {
 				<form className="ui form">
 					<div className="field">
 						<label> Image Search </label>
-						<input type="text" onChange={this.onInputChange} />
+						{/*<input type="text" onChange={this.onInputChange} />*/}
+						<input type="text" onChange={e => console.log(e.target.value)} />
 					</div>
 				</form>
 			</div>
