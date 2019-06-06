@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 import Spinner from './Spinner';
+
+//functional component to show simple content without any logic behind
+//class component show content that requires complicated logic, show data that changes overtime
 class App extends React.Component {
 	//this is specific to javascript
 	/*constructor(props) {
