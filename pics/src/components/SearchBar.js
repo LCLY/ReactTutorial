@@ -10,6 +10,7 @@ class SearchBar extends React.Component {
 	onFormSubmit = event => {
 		//prevent the form to submit automatically anad submit the page
 		event.preventDefault();
+		//this is to send the data back to parent
 		this.props.onSubmit(this.state.term);
 		console.log(this.state.term);
 	};
