@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
 class App extends React.Component {
+	state = { image: [] };
 	//generally the term is submitted through the Search Bar component, it goes into the prop.onSubmit, back to this.onSearchSubmit and then get the term from the function below
 	//1 way to get response/result data
 	/*onSearchSubmit(term) {
@@ -18,7 +19,7 @@ class App extends React.Component {
 	}*/
 
 	//another method: using async and await
-	async onSearchSubmit(term) {
+	onSearchSubmit = async term => {
 		const response = await axios.get('https://api.unsplash.com/search/photos', {
 			params: { query: term },
 			headers: {
@@ -26,13 +27,14 @@ class App extends React.Component {
 			},
 		});
 
-		console.log(response.data.results);
-	}
+		this.setState({ images: response.data.results });
+	};
 
 	render() {
 		return (
 			<div className="ui container" style={{ marginTop: '10px' }}>
 				<SearchBar onSubmit={this.onSearchSubmit} />
+				Found:{this.state.images.length} images
 			</div>
 		);
 	}
