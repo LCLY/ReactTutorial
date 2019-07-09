@@ -5,10 +5,11 @@ import ReactDOM from 'react-dom';
 //CommonJS Modules use require import statement
 
 //Create a react component
+//in JSX use className instead of class
 const App = () => {
 	return (
 		<div>
-			<label class="label" for="name">
+			<label className="label" for="name">
 				Enter name:
 			</label>
 			<input id="name" type="text" />
